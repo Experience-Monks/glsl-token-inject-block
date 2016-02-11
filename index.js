@@ -29,7 +29,22 @@ function getStartIndex (tokens) {
       if (/^#(extension|version)/.test(token.data)) {
         start = Math.max(start, i)
       }
+    } else if (token.type === 'keyword' && token.data === 'precision') {
+      var semi = findNextSemicolon(tokens, i)
+      if (semi === -1) {
+        throw new Error('precision statement not followed by any semicolons!')
+      }
+      start = Math.max(start, semi)
     }
   }
   return start + 1
+}
+
+function findNextSemicolon (tokens, start) {
+  for (var i = start; i < tokens.length; i++) {
+    if (tokens[i].type === 'operator' && tokens[i].data === ';') {
+      return i
+    }
+  }
+  return -1
 }

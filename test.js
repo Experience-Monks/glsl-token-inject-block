@@ -10,6 +10,10 @@ test("get first token where it's safe to define values", function (t) {
   t.equal(stringify(inject(shader, injected)), 
     '#define blah\n#define foo\nvoid main(){}')
 
+  shader = tokenize('precision mediump float;\nprecision mediump int;\nvoid main(){}')
+  t.equal(stringify(inject(shader, injected)), 
+    'precision mediump float;\nprecision mediump int;\n#define blah\nvoid main(){}')
+
   shader = tokenize('void main(){}')
   t.equal(stringify(inject(shader, injected)), 
     '#define blah\nvoid main(){}')

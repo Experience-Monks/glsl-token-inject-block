@@ -2,7 +2,7 @@
 
 [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
-Injects a "block" of GLSL tokens into a shader, after any `#version` and `#extension` flags. This will pad the new tokens with the necessary amount of newlines (but no more).
+Injects a "block" of GLSL tokens into a shader, after any `#version`, `#extension` and `precision` statements. This will pad the new tokens with the necessary amount of newlines (but no more).
 
 This module ignores token `line`, `column` and `position`.
 
