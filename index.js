@@ -26,7 +26,7 @@ function getStartIndex (tokens) {
   for (var i = 0; i < tokens.length; i++) {
     var token = tokens[i]
     if (token.type === 'preprocessor') {
-      if (/^#(extension|version)/.test(token.data)) {
+      if (/^#(extension|version|endif)/.test(token.data)) {
         start = Math.max(start, i)
       }
     } else if (token.type === 'keyword' && token.data === 'precision') {
